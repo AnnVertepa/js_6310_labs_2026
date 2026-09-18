@@ -105,7 +105,11 @@ const student = {
 
     // Метод для расчета среднего балла
     getAverageGrade() {
-        return (student.grades.math + student.grades.programming + student.grades.history) / 3
+        const grades = Object.values(student.grades);
+        const sum = grades.reduce((acc, g) => {
+                        return acc + g;
+                    }, 0);
+        return sum / grades.length;
     },
 
     // Метод для добавления новой оценки
@@ -188,9 +192,9 @@ const taskManager = {
         taskManager.tasks.push({ id: taskManager.tasks[taskManager.tasks.length -1].id + 1, title: title, completed: false, priority: priority })
     },
 
-completeTask(taskId) {
-    // 5.2 Отметка выполнения
-    const task = taskManager.tasks.find((i) => {
+    completeTask(taskId) {
+        // 5.2 Отметка выполнения
+        const task = taskManager.tasks.find((i) => {
         return i.id === taskId;
     });
     task.completed = true;
@@ -375,9 +379,33 @@ function runTests() {
 
     // Тест 2: calculate
     console.assert(calculate(10, 5, '+') === 15, "Тест калькулятора провален");
+    console.assert(calculate(10, 5, "+") === 15, "неверно, 10 + 5 = 15");
+    console.assert(calculate(10, 5, "-") === 5, "неверно, 10 - 5 = 5");
+    console.assert(calculate(10, 5, "*") === 50, "неверно, 10 * 5 = 50");
+    console.assert(calculate(10, 5, "/") === 2, "неверно, 10 / 5 = 2");
 
     // Тест 3: taskManager
     console.assert((taskManager.getStats() || {}).total === 3, "Тест taskManager провален");
+
+    console.assert(taskManager.getStats().completed === 1, "выполнена 1 задача");
+    console.assert(taskManager.getStats().pending === 2, "невыполненно 2 задачи");
+
+    taskManager.addTask("сделать сальто", "high");
+    console.assert(taskManager.tasks.length === 4, "теперь есть 4 задачи");
+
+    taskManager.completeTask(3);
+    console.assert(taskManager.tasks.find(t => t.id === 3).completed === true, "задача 3 выполнена");
+
+    taskManager.deleteTask(1);
+    console.assert(taskManager.tasks.length === 3, "должно остаться 3 задачи");
+
+    const completed = taskManager.getTasksByStatus(true);
+    console.assert(completed.every(t => t.completed === true), "все задачи выполнены");
+
+    console.assert(student.getAverageGrade() === 90, "ср.балл изначально 90");
+    student.addGrade("english", 50);
+    console.assert(student.grades.english === 50, "нет оценки по english");
+    console.assert(student.getAverageGrade() === 80, "ср.балл должен стать 80");
 
     // Тест 4: классы и наследование
     const { Vehicle, Car, ElectricCar, createVehicleFactory } = taskClasses();
