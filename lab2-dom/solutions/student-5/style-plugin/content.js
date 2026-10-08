@@ -1,7 +1,6 @@
 'use strict'
 
 function addDarkMode() {
-    // Включаем ужасный режим
     function applyUglyMode() {
         const pageWrapper = document.getElementById('page_wrapper');
         const mainSlider = document.querySelector('.main_slider_holder');
@@ -24,7 +23,6 @@ function addDarkMode() {
             newsBox.style.marginLeft = '37px';
         }
 
-        // ===== querySelectorAll =====
         const navLinks = document.querySelectorAll('.box_links a');
         navLinks.forEach((link) => {
             link.style.color = 'cyan';
@@ -33,7 +31,6 @@ function addDarkMode() {
             link.style.fontFamily = 'Impact';
         });
 
-        // ===== parentElement =====
         if (navLinks.length > 0) {
             const parent = navLinks[0].parentElement;
             if (parent) {
@@ -41,7 +38,6 @@ function addDarkMode() {
             }
         }
 
-        // ===== children =====
         if (newsBox && newsBox.children.length > 0) {
             const newsChildren = newsBox.children;
             for (let i = 0; i < newsChildren.length; i++) {
@@ -50,14 +46,12 @@ function addDarkMode() {
             }
         }
 
-        // ===== Сложный селектор (тег + класс) =====
         const headerEl = document.querySelector('header .box_links');
         if (headerEl) {
             headerEl.style.borderBottom = '7px dotted orange';
         }
     }
 
-    // Выключаем ужасный режим — сбрасываем стили
     function removeUglyMode() {
         const pageWrapper = document.getElementById('page_wrapper');
         const mainSlider = document.querySelector('.main_slider_holder');
@@ -86,7 +80,6 @@ function addDarkMode() {
         if (headerEl) headerEl.style.cssText = '';
     }
 
-    // Переключаем режим + сохраняем в localStorage
     function toggleUglyMode() {
         const isEnabled = localStorage.getItem('uglyMode') === 'true';
         
@@ -101,7 +94,6 @@ function addDarkMode() {
         }
     }
 
-    // Обновляем текст кнопки — показывает статус
     function updateButtonStatus(isEnabled) {
         const button = document.getElementById('dark-mode-toggle-btn');
         if (button) {
@@ -110,7 +102,6 @@ function addDarkMode() {
         }
     }
 
-    // Создаём кнопку
     function createToggleButton() {
         if (document.getElementById('dark-mode-toggle-btn')) {
             return;
