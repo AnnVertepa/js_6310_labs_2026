@@ -2,7 +2,7 @@
   "bail": 1,
   "verbose": false,
   "collectCoverageFrom": ["src/**/*.{js,jsx,ts,tsx}"],
-  "coveragePathIgnorePatterns": ["src/index.js", "src/bots/telegramBot.js"],
+  "coveragePathIgnorePatterns": ["src/index.js"],
   "coverageDirectory": "coverage",
   "coverageThreshold": {
     "global": {
