@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
-import { GameBoard, GameControls } from 'ui-library'
+import { GameBoard, GameControls } from '@my-app/ui-library'
 
 import { getBotMove, checkWinner } from './bot'
 
-import type { Difficulty } from 'ui-library'
+import type { Difficulty } from '@my-app/ui-library'
 import './App.css'
 
 export const App: React.FC = () => {

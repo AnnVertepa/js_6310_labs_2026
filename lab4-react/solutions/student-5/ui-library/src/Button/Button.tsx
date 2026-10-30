@@ -3,12 +3,12 @@ import React from 'react'
 import styles from './Button.module.css'
 
 export interface ButtonProps {
-  variant?: 'primary' | 'secondary';
-  size?: 'small' | 'medium' | 'large';
-  type?: 'submit' | 'button';
-  disabled?: boolean;
-  onClick?: () => void;
-  children: React.ReactNode;
+  variant?: 'primary' | 'secondary'
+  size?: 'small' | 'medium' | 'large'
+  type?: 'submit' | 'button'
+  disabled?: boolean
+  onClick?: () => void
+  children: React.ReactNode
 }
 
 export const Button: React.FC<ButtonProps> = ({

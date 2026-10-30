@@ -28,5 +28,4 @@ describe('Button', () => {
     
     expect(container.firstChild).toHaveClass('btn--secondary')
   })
-
 })

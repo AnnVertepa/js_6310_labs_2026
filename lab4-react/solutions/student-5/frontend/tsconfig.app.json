@@ -26,10 +26,6 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
-      "paths": {
-      "ui-library": ["./../ui-library/src/index.ts"],
-      "ui-library/*": ["./../ui-library/src/*"]
-    }
   },
   "include": ["src"]
 }

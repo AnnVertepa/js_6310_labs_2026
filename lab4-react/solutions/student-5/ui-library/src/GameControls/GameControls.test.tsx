@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react'
+
 import { GameControls } from './GameControls'
 
 describe('GameControls', () => {
@@ -24,6 +25,7 @@ describe('GameControls', () => {
     render(<GameControls {...defaultProps} />)
     
     const newGameButton = screen.getByText('Новая игра')
+
     fireEvent.click(newGameButton)
 
     expect(defaultProps.onNewGame).toHaveBeenCalledTimes(1)
@@ -33,6 +35,7 @@ describe('GameControls', () => {
     render(<GameControls {...defaultProps} />)
     
     const surrenderButton = screen.getByText('Сдаться')
+
     fireEvent.click(surrenderButton)
 
     expect(defaultProps.onSurrender).toHaveBeenCalledTimes(1)
@@ -48,6 +51,7 @@ describe('GameControls', () => {
     render(<GameControls {...defaultProps} />)
     
     const select = screen.getByRole('combobox')
+
     fireEvent.change(select, { target: { value: 'hard' } })
 
     expect(defaultProps.onDifficultyChange).toHaveBeenCalledWith('hard')
